@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nikhil Tayde — Portfolio</title>
+  <!-- FAVICON: replace href with your favicon file -->
+  <link rel="icon" href="/assets/favicon.ico" />
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Portfolio of Nikhil Tayde - Fullstack developer" />
+  <style>
+    :root{
+      --primary:#0f172a;   /* deep navy */
+      --accent:#06b6d4;    /* cyan */
+      --muted:#94a3b8;     /* slate */
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --glass: rgba(255,255,255,0.6);
+      --max-width:1100px;
+      --radius:12px;
+      --shadow: 0 6px 18px rgba(2,6,23,0.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--primary);}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max-width);margin:0 auto;padding:24px}
+
+    /* NAVBAR */
+    header{position:sticky;top:0;z-index:60;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));backdrop-filter:blur(6px);border-bottom:1px solid rgba(15,23,42,0.04)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:42px;height:42px;border-radius:8px;object-fit:cover}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{padding:8px 10px;border-radius:8px;font-weight:600;color:var(--primary)}
+    .menu a:hover{background:var(--glass)}
+    .cta{background:var(--accent);color:white;padding:8px 12px;border-radius:8px;font-weight:700}
+
+    /* HAMBURGER */
+    .hamburger{display:none;border:0;background:transparent;padding:8px}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--primary);margin:5px 0;border-radius:2px}
+
+    /* HERO / ABOUT */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;padding:48px 0}
+    .intro h1{font-size:2.4rem;margin:0 0 8px}
+    .intro p.lead{margin:0 0 18px;color:var(--muted);font-size:1.05rem}
+    .hero-card{background:var(--card);box-shadow:var(--shadow);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;align-items:center;gap:12px}
+    .hero-card img.prof{width:260px;height:260px;border-radius:12px;object-fit:cover}
+
+    /* SECTION TITLES */
+    .section{padding:40px 0}
+    .section h2{font-size:1.25rem;margin:0 0 18px}
+
+    /* PROJECTS */
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .card{background:var(--card);border-radius:12px;padding:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+    .card img.cover{width:100%;height:180px;border-radius:10px;object-fit:cover}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:13px;padding:6px 8px;border-radius:999px;background:linear-gradient(90deg, rgba(6,182,212,0.08), rgba(15,23,42,0.02));color:var(--primary);border:1px solid rgba(6,182,212,0.12)}
+    .card .meta{display:flex;justify-content:space-between;align-items:center}
+    .card .actions{display:flex;gap:8px}
+    .button{padding:8px 10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);font-weight:600}
+
+    /* TECHS */
+    .tech-grid{display:flex;flex-wrap:wrap;gap:12px}
+    .tech{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:var(--card);box-shadow:var(--shadow)}
+    .tech img{width:36px;height:36px;object-fit:contain}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    .socials{display:flex;flex-direction:column;gap:10px}
+    .socials a{display:inline-flex;align-items:center;gap:10px;padding:10px;border-radius:8px;background:var(--card);box-shadow:var(--shadow)}
+
+    footer{padding:28px 0;color:var(--muted);text-align:center}
+
+    /* RESPONSIVE */
+    @media (max-width:1000px){ .hero{grid-template-columns:1fr 300px} }
+    @media (max-width:820px){
+      .menu{display:none}
+      .hamburger{display:block}
+      .hero{grid-template-columns:1fr}
+      .hero-card img.prof{width:220px;height:220px}
+      .projects-grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:420px){
+      .intro h1{font-size:1.6rem}
+      .hero-card img.prof{width:180px;height:180px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+       
+        <div>
+          <div style="font-weight:700">Nikhil Tayde</div>
+          <div style="font-size:12px;color:var(--muted)">Fullstack Developer</div>
+        </div>
+      </div>
+      <nav>
+        <div class="menu" id="menu">
+          <a href="#home">Home</a>
+          <a href="#about">About Me</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <a href="./assets/NikhilTayde.pdf" class="cta" id="resumeTop">Resume</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO / ABOUT -->
+    <section id="home" class="hero">
+      <div class="intro">
+        <h1>Hello, I'm <span style="color:var(--accent)">Nikhil Tayde</span></h1>
+        <p class="lead">I build modern, responsive web applications — focused on clean UI and efficient backend. I enjoy learning new stacks and shipping projects end-to-end.</p>
+        <p>Available for freelance and full-time opportunities. <a href="#contact">Contact me</a>.</p>
+        <p>
+          <a href="#projects" class="button">See Projects</a>
+          <a href="./assets/NikhilTayde.pdf" class="button" style="margin-left:10px; background:var(--accent); color:white; border:none;">Download Resume</a>
+        </p>
+      </div>
+
+      <aside>
+        <div class="hero-card">
+          <!-- Replace with your single professional photo (square preferred) -->
+          <img src="./assets/nikhil-profile.jpg" alt="Nikhil Tayde" class="prof" />
+          <div style="text-align:center">
+            <div style="font-weight:700">Nikhil Tayde</div>
+            <div style="font-size:13px;color:var(--muted)">Fullstack Developer — MERN / JS</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2>Projects — Selected Work</h2>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="card">
+          <img class="cover" src="./assets/edXacademy.jpg" alt="project 1 - edXacademy" />
+          <div>
+            <h3 style="margin:6px 0">edXacademy - learn at your own pace</h3>
+            <p style="margin:6px 0;color:var(--muted)">Full-featured course management system with authentication, instructor CRUD, student enrollment and filtering.</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Tailwind CSS</span>
+              <!-- <span class="tag">MongoDB</span> -->
+            </div>
+          </div>
+          <div class="meta">
+            <div class="actions">
+              <a class="button" href="https://github.com/NikhilT97/edXacademy" target="_blank" rel="noopener">GitHub</a>
+              <a class="button" href="https://edxacademy.netlify.app/" target="_blank" rel="noopener">Live Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card">
+          <img class="cover" src="./assets/modesense.jpg" alt="Project 2 - modesense " />
+          <div>
+            <h3 style="margin:6px 0">Modesense — Fashion & Lifestyle Store</h3>
+            <p style="margin:6px 0;color:var(--muted)">A fast, responsive front‑end shop for men’s, women’s & kids’ fashion plus beauty essentials.</p>
+            <div class="tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+            </div>
+          </div>
+
+          <div class="meta">
+            <div class="actions">
+              <a class="button" href="https://github.com/NikhilT97/B43_WEB_001_Code-Crafters" target="_blank" rel="noopener">GitHub</a>
+              <a class="button" href="https://majestic-dasik-4f5d39.netlify.app/" target="_blank" rel="noopener">Live Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card">
+          <img class="cover" src="./assets/moviesPlex.png" alt="Project 3" />
+          <div>
+            <h3 style="margin:6px 0">MoviesPlex app <h3>
+            <p style="margin:6px 0;color:var(--muted)">A simple Movie App that allows users to view a list of movies, search, filter and sort.</p>
+            <div class="tags">
+              <span class="tag">HTMl</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </div>
+          <div class="meta">
+            <div class="actions">
+              <a class="button" href="https://github.com/NikhilT97/MoviesPlex" target="_blank" rel="noopener">GitHub</a>
+              <a class="button" href="https://moviesplex2.netlify.app/" target="_blank" rel="noopener">Demo Video</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="card">
+          <img class="cover" src="./assets/EasyMeds.png" alt="Project 4" />
+          <div>
+            <h3 style="margin:6px 0">EasyMeds</h3>
+            <p style="margin:6px 0;color:var(--muted)">Track matches, favorite teams, advanced filtering and statistics dashboard.</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Tailwind</span>
+              <span class="tag">Typescript</span>
+
+            </div>
+          </div>
+          <div class="meta">
+            <div class="actions">
+              <a class="button" href="https://github.com/NikhilT97/B44_PharmaCo" target="_blank" rel="noopener">GitHub</a>
+              <a class="button" href="https://incomparable-bunny-8aed28.netlify.app/" target="_blank" rel="noopener">Live Demo</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- GitHub Stats & Calendar -->
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <!-- Replace username in the URLs below -->
+        <img src="https://camo.githubusercontent.com/ebb444a2f5e4754bce7b60adb4fb81dd9dd9c1b6b13150e8a24f4c49e0063c05/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170693f757365726e616d653d4e696b68696c543937267468656d653d6461726b26686964655f626f726465723d66616c736526696e636c7564655f616c6c5f636f6d6d6974733d66616c736526636f756e745f707269766174653d66616c7365" alt="github stats" style="max-width:480px;border-radius:10px;box-shadow:var(--shadow)" />
+        <img src="https://camo.githubusercontent.com/d8ed9840e1ec7e3e1e8a1da499fc1b8b46380a368738ecaee1fe10832b884193/68747470733a2f2f6769746875622d726561646d652d73747265616b2d73746174732e6865726f6b756170702e636f6d2f3f757365723d4e696b68696c543937267468656d653d6461726b26686964655f626f726465723d66616c7365" alt="github Streak" style="max-width:480px;border-radius:10px;box-shadow:var(--shadow)" />
+      </div>
+
+
+      
+
+    </section>
+
+    <!-- SKILLS / TECH STACK -->
+    <section id="skills" class="section">
+      <h2>Tech Stack & Tools</h2>
+      <div class="tech-grid">
+        <div class="tech"><img src="https://camo.githubusercontent.com/d4d9d935f85b68223a3514c6a889ea3ed6a77afb5f560c05baa1a1b168077830/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f68746d6c352d2532334533344632362e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d68746d6c35266c6f676f436f6c6f723d7768697465" alt="html"/><div>HTML5</div></div>
+        <div class="tech"><img src="https://camo.githubusercontent.com/930c71eac967cc5cec61c0aa08ba3719f9cb68e28cdffa63b28b0a31be1663b4/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f637373332d2532333135373242362e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d63737333266c6f676f436f6c6f723d7768697465" alt="css"/><div>CSS3</div></div>
+        <div class="tech"><img src="https://camo.githubusercontent.com/e919aab8eb47ac6a5dcefeff69b80b276de521fea9422b992453fd25e3f501f1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7461696c77696e646373732d2532333338423241432e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d7461696c77696e64637373266c6f676f436f6c6f723d7768697465" alt="tailwind"/><div>Tailwind</div></div>
+
+        <div class="tech"><img src="https://camo.githubusercontent.com/29d02b3669d6450d67e043cf5909e740dcb94c1e2306d88ac48b15b4ec55dc65/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6a6176617363726970742d2532333332333333302e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d6a617661736372697074266c6f676f436f6c6f723d253233463744463145" alt="js"/><div>JavaScript</div></div>
+
+        <div class="tech"><img src="https://camo.githubusercontent.com/f93e05694a6f01f2f6a37713a454a942442a5ff2b33083891096a6f7e57842f8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f72656163742d2532333230323332612e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d7265616374266c6f676f436f6c6f723d253233363144414642" alt="react"/><div>React</div></div>
+        <div class="tech"><img src="http://camo.githubusercontent.com/87fddcd5ffb4ce7ed9444fd01d49e8e79b3d0e81b7d13110bf0279424730f87a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6e6f64652e6a732d2532333333393933332e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d6e6f64652e6a73266c6f676f436f6c6f723d7768697465" alt="node"/><div>Node.js</div></div>
+        <div class="tech"><img src="https://camo.githubusercontent.com/2425d0f3feb59b5d9d6bf2804bc204ee46ef6649adffa46888384189c14ff5f8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d6f6e676f64622d2532333465613934622e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d6d6f6e676f6462266c6f676f436f6c6f723d7768697465" alt="mongo"/><div>MongoDB</div></div>
+        <div class="tech"><img src="https://camo.githubusercontent.com/ea3ebab50ec3dbb12bf5c43bc55f719c0ce0a1db699a818c817c5e65cc9cd88e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f657870726573732e6a732d2532333430346435392e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d65787072657373266c6f676f436f6c6f723d7768697465" alt="Express.js"/><div>Express.js</div></div>
+        <div class="tech"><img src="https://camo.githubusercontent.com/1c4a07be1228ee787854210aa18dc069f01faf771de0c71884cf177bd88f450b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5245535466756c2532304150492d2532333030303030302e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d617069266c6f676f436f6c6f723d7768697465" alt="typescript"/><div>TypeScript</div></div>
+        <div class="tech"><img src="https://camo.githubusercontent.com/1c4a07be1228ee787854210aa18dc069f01faf771de0c71884cf177bd88f450b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5245535466756c2532304150492d2532333030303030302e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d617069266c6f676f436f6c6f723d7768697465" alt="typescript"/><div>Restful Api</div></div>
+        <div class="tech"><img src="https://camo.githubusercontent.com/7e282220b8ec0dd29cf99be1c0f5e82d74a42bc84ed834ee6afd86b4bad3bfee/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6769746875622d2532333132313031312e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465" alt="typescript"/><div>GitHub</div></div>
+        <div class="tech"><img src="https://camo.githubusercontent.com/893370eeab3ae74b7602a757431776c5f106d9c96d723f63b35c73cc660bd7e3/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6e706d2d2532334342333833372e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d6e706d266c6f676f436f6c6f723d7768697465" alt="NPM"/><div>NPM</div></div>
+        <div class="tech"><img src="https://camo.githubusercontent.com/cf06fedcca8eedc2ebcf41a87c79ae200b8e7f79b65a9c2dcd833d1990bd3290/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f506f73746d616e2d4646364333373f7374796c653d666f722d7468652d6261646765266c6f676f3d706f73746d616e266c6f676f436f6c6f723d7768697465" alt="typescript"/><div> Postman</div></div>
+        <div class="tech"><img src="https://camo.githubusercontent.com/b73e5013a07e63e8b3630bb74515ab14c102b357a31f1294fbfa5e2f7f1647d5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4368616b72615f55492d2532333346343935352e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d6368616b72612d7569266c6f676f436f6c6f723d7768697465" alt="Chakra Ui"/><div>chakra UI</div></div>
+        <div class="tech"><img src="https://camo.githubusercontent.com/101b457d9d951e772e3b0d8fcb42831060c38625104d479bd45c89cacbc00570/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f66697265626173652d2532334646434132382e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d6669726562617365266c6f676f436f6c6f723d7768697465" alt="Firebase"/><div>Firebase</div></div>
+        <div class="tech"><img src="https://camo.githubusercontent.com/43962ea76518cc3d0819b0206791ae36c28ccc369f99f412379914f42431c025/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f76657263656c2d2532333030303030302e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d76657263656c266c6f676f436f6c6f723d7768697465" alt="Varsel"/><div>Varsel</div></div>
+
+        <div class="tech"><img src="https://camo.githubusercontent.com/bef49d7a2d61e6b7e14d26d1d4ddb7b26e57d8e89d9c574dfeb6aafdfabc21c7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f72656e6465722d2532333030303030302e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d72656e646572266c6f676f436f6c6f723d7768697465" alt="Render"/><div>Render</div></div>
+
+
+      </div>
+      
+      
+       
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div>
+          <p style="color:var(--muted)">I'm open to work and freelance. Reach out via any of the following:</p>
+          <div class="socials">
+            <a href="https://www.linkedin.com/in/nikhiltayde97/" target="_blank" rel="noopener">LinkedIn — https://www.linkedin.com/in/nikhiltayde97/yourprofile</a>
+            <a href="https://github.com/NikhilT97" target="_blank" rel="noopener">GitHub — https://github.com/NikhilT97</a>
+            <a href="mailto:youremail@example.com">Email — nikhiltayde97@gmail.com</a>
+            <a href="tel:+911234567890">Phone — +91 8421 899 526</a>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card">
+            <h3>Download Resume</h3>
+            <p style="color:var(--muted);margin:0 0 10px">Click the button below to download my resume. The filename follows the format "Firstname-Lastname-Resume.pdf".</p>
+            <!-- Replace href with your resume file path or Google Drive direct download link -->
+            <a id="downloadResume" class="button" href="./assets/NikhilTayde.pdf" download="Nikhil-Tayde-Resume.pdf">Download Resume</a>
+            <a class="button" href="https://drive.google.com/file/d/1AbFXxD7EyHcLMtCyTFUbz5NEEyDF1-mk/view?usp=sharing" target="_blank" rel="noopener" style="margin-left:8px">View on Drive</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Nikhil Tayde. All rights reserved.</div>
+      <div style="margin-top:8px;color:var(--muted)">Built with ❤️ by Nikhil Tayde </div>
+    </footer>
+  </main>
+
+  <script>
+    // Small interactive behaviours
+    const ham = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+    ham && ham.addEventListener('click', ()=>{
+      if(menu.style.display === 'flex') menu.style.display = 'none';
+      else menu.style.display = 'flex';
+    });
+
+    // Close menu when link clicked (mobile)
+    document.querySelectorAll('.menu a').forEach(a=>a.addEventListener('click', ()=>{
+      if(window.innerWidth <= 820) menu.style.display = 'none';
+    }))
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Accessibility: allow hamburger toggle via keyboard
+    ham && ham.addEventListener('keyup', (e)=>{ if(e.key === 'Enter') ham.click(); })
+
+    // Ensure resume top button triggers download link
+    document.getElementById('resumeTop') && document.getElementById('resumeTop').addEventListener('click', (e)=>{
+      // if you want it to directly trigger the file download, uncomment below and set correct file path
+      // window.location.href = '/assets/Nikhil-Tayde-Resume.pdf';
+    });
+  </script>
+</body>
+</html>
